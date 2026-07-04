@@ -1,0 +1,15 @@
+程序启动时间：2026-07-04 20:25:01.530267
+数据集字段：['InvoiceNo', 'StockCode', 'Quantity', 'UnitPrice', 'Total', 'InvoiceDate', 'Category', 'Month', 'UserID']
+
+任务需求：统计每个品类总销售额从高到低排序，打印表格并绘制横向柱状图
+生成代码：
+category_sales = df.groupby('Category')['Total'].sum().sort_values(ascending=False)
+print(category_sales.reset_index())
+plt.barh(category_sales.index, category_sales.values)
+plt.xlabel('Total Sales')
+plt.ylabel('Category')
+plt.title('Total Sales by Category (Descending)')
+plt.gca().invert_yaxis()
+plt.show()
+执行状态：成功
+
